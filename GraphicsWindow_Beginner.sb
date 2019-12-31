@@ -1,0 +1,30 @@
+GraphicsWindow.Title = "Drawing some stuff"
+GraphicsWindow.Top = 50
+GraphicsWindow.Left = 50
+GraphicsWindow.Height = 550
+GraphicsWindow.Width = 550
+GraphicsWindow.Show()
+
+For i = 1 To 55
+  GraphicsWindow.DrawLine((i-1)*10,550,(i-1)*10,550 - (Math.Power(i/2.5,2)))
+  GraphicsWindow.PenWidth = 10 * Math.Abs(Math.Sin(Math.Pi * (i/5)))
+  If Math.Remainder(i,3) = 0 Then
+    GraphicsWindow.PenColor = "Red"
+  ElseIf Math.Remainder(i,3) = 1 Then
+    GraphicsWindow.PenColor = "Green"
+  Else
+    GraphicsWindow.PenColor = "Blue"
+  EndIf
+  Program.Delay(50)
+  
+  GraphicsWindow.SetPixel(50 + i,50 + 10*Math.Cos(Math.Pi*i/14), "Red")
+EndFor
+
+GraphicsWindow.FontName = "Times New Roman"
+GraphicsWindow.FontSize = 20
+GraphicsWindow.DrawBoundText(50, 75, 500, "Look at that wave!")
+
+GraphicsWindow.FontName = "Courier New"
+GraphicsWindow.FontItalic = "True"
+GraphicsWindow.FontSize = 12
+GraphicsWindow.DrawBoundText(50, 400, 200, "I may have spent too much time making this...")

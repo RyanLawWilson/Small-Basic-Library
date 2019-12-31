@@ -1,0 +1,82 @@
+GraphicsWindow.Title = "Crosshair"
+GraphicsWindow.Width = 800
+GraphicsWindow.Height = 700
+GraphicsWindow.Show()
+
+BuildCrosshair()
+BuildSmileyFace()
+SmileyFaceHide()
+GraphicsWindow.PenColor = "Black"
+
+GraphicsWindow.MouseMove = MoveCrosshair
+GraphicsWindow.MouseDown = Fire
+GraphicsWindow.MouseUp = ReturnToNormal
+
+GraphicsWindow.KeyDown = SmileyFaceShow
+GraphicsWindow.KeyUp = SmileyFaceHide
+
+
+Sub MoveCrosshair
+  x_move = GraphicsWindow.MouseX
+  y_move = GraphicsWindow.MouseY
+  Shapes.Move(crosshair_circle, x_move - 26, y_move - 26)
+  Shapes.Move(crosshair_squares_horizontal, x_move - 27, y_move - 5)
+  Shapes.Move(crosshair_squares_vertical, x_move - 5, y_move - 27)
+EndSub
+
+Sub Fire
+  x_fire = GraphicsWindow.MouseX
+  y_fire = GraphicsWindow.MouseY
+  GraphicsWindow.BrushColor = GraphicsWindow.GetRandomColor()
+  GraphicsWindow.FillEllipse(x_fire - 50, y_fire - 50, 100, 100)
+  
+  Shapes.Zoom(crosshair_circle, 0.75,0.75)
+  Shapes.Move(crosshair_squares_horizontal, 0.75,0.75)
+  Shapes.Move(crosshair_squares_vertical, 0.75,0.75)
+EndSub
+
+Sub ReturnToNormal
+  Shapes.Zoom(crosshair_circle,1,1)
+  Shapes.Move(crosshair_squares_horizontal,1,1)
+  Shapes.Move(crosshair_squares_vertical,1,1)
+EndSub
+
+Sub BuildCrosshair
+  GraphicsWindow.BrushColor = "White"
+  GraphicsWindow.PenColor = "Red"
+  crosshair_circle = Shapes.AddEllipse(50,50)
+  GraphicsWindow.BrushColor = "White"
+  GraphicsWindow.PenColor = "White"
+  crosshair_squares_vertical = Shapes.AddRectangle(10, 55)
+  crosshair_squares_horizontal = Shapes.AddRectangle(55, 10)
+EndSub
+
+Sub BuildSmileyFace
+  GraphicsWindow.BrushColor = "Yellow"
+  smiley["Face"] = Shapes.AddEllipse(600,600)
+  GraphicsWindow.BrushColor = "Black"
+  smiley["Eye1"] = Shapes.AddEllipse(50,150)
+  Shapes.Move(smiley["Eye1"], 150, 100)
+  smiley["Eye2"] = Shapes.AddEllipse(50,150)
+  Shapes.Move(smiley["Eye2"], 300, 100)
+  smiley["Mouth"] = Shapes.AddRectangle(300, 75)
+  Shapes.Move(smiley["Mouth"], 100, 350)
+EndSub
+
+Sub SmileyFaceShow
+  Shapes.ShowShape(smiley["Face"])
+  Shapes.ShowShape(smiley["Eye1"])
+  Shapes.ShowShape(smiley["Eye2"])
+  Shapes.ShowShape(smiley["Mouth"])
+EndSub
+
+Sub SmileyFaceHide
+  Shapes.HideShape(smiley["Face"])
+  Shapes.HideShape(smiley["Eye1"])
+  Shapes.HideShape(smiley["Eye2"])
+  Shapes.HideShape(smiley["Mouth"])
+EndSub
+
+
+  
+  

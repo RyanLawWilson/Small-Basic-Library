@@ -1,0 +1,20 @@
+'This is my guessing game from my flowchart that I submitted without life counter
+'This is without loops because they haven't been covered yet.
+
+TextWindow.Title = "Guess the Number"
+answer = Math.GetRandomNumber(10)
+
+TextWindow.WriteLine("Welcome to the Guessing game")
+TextWindow.WriteLine("Numbers are between 1 - 10.  Good Luck!")
+TextWindow.WriteLine("")
+
+TextWindow.Write("Guess the random number: ")
+guess = TextWindow.Read()
+If guess = answer Then
+  TextWindow.WriteLine("YOU DID IT!!!!  It was " + answer)
+EndIf
+
+If guess <> answer Then
+  TextWindow.WriteLine("Ooof, nope.  It's " + answer)
+EndIf
+  

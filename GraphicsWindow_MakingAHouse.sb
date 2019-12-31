@@ -1,0 +1,40 @@
+GraphicsWindow.Title = "Moving Shapes and Making Houses"
+GraphicsWindow.Width = 700
+GraphicsWindow.Height = 500
+GraphicsWindow.BackgroundColor = "DeepSkyBlue"
+GraphicsWindow.Show()
+
+'Sun
+GraphicsWindow.PenColor = "Red"
+GraphicsWindow.DrawEllipse(550,10,100,100)
+GraphicsWindow.BrushColor = "Yellow"
+GraphicsWindow.FillEllipse(550,10,100,100)
+
+'Wavy Background
+GraphicsWindow.PenWidth = 10
+GraphicsWindow.PenColor = "SeaGreen"
+For i = 0 To 70
+  GraphicsWindow.DrawLine(i*10,500,i*10,400-10*Math.Sin(Math.Pi*i/4))
+EndFor
+
+'The Green Ground
+GraphicsWindow.BrushColor = "Green"
+GraphicsWindow.FillRectangle(0,450,700,500)
+
+'House Frame
+GraphicsWindow.BrushColor = "SaddleBrown"
+GraphicsWindow.FillRectangle(100, 300, 150, 150)
+
+'House Roof
+GraphicsWindow.BrushColor = "FireBrick"
+GraphicsWindow.FillTriangle(70,300,175,250,280,300)
+
+'Bird
+GraphicsWindow.PenWidth = 2
+GraphicsWindow.BrushColor = "Blue"
+GraphicsWindow.PenColor = "OrangeRed"
+bird = Shapes.AddTriangle(172,245,175,250,178,245)
+Program.Delay(1000)
+Shapes.Animate(bird,125,200,1500)
+Program.Delay(2500)
+Shapes.Animate(bird,800,-100,2000)

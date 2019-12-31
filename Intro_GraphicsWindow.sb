@@ -1,0 +1,75 @@
+GraphicsWindow.Height = 700
+GraphicsWindow.Width = 1250
+GraphicsWindow.BackgroundColor = "Silver"
+GraphicsWindow.Title = "The Graphics Window!"
+GraphicsWindow.Show()
+
+globalDelay = 50
+
+'Drawing Lines
+GraphicsWindow.PenWidth = 10
+GraphicsWindow.PenColor = "Red"
+GraphicsWindow.DrawLine(10,10,200,10)
+
+Program.Delay(globalDelay)
+GraphicsWindow.PenWidth = 20
+GraphicsWindow.PenColor = "Blue"
+GraphicsWindow.DrawLine(10,10,10,200)
+
+Program.Delay(globalDelay)
+GraphicsWindow.PenWidth = 30
+GraphicsWindow.PenColor = "Yellow"
+GraphicsWindow.DrawLine(10,200,200,200)
+
+Program.Delay(globalDelay)
+GraphicsWindow.PenWidth = 40
+GraphicsWindow.PenColor = "Green"
+GraphicsWindow.DrawLine(200,10,200,200)
+
+
+'Using For Loops In Graphics Window
+GraphicsWindow.PenWidth = 5
+GraphicsWindow.PenColor = "Black"
+For A = 1 To 15
+  Program.Delay(globalDelay)
+  GraphicsWindow.PenWidth = A
+  GraphicsWindow.DrawLine(220, A * 20, 400, A * 20)
+EndFor
+
+
+'Setting Pixels
+GraphicsWindow.SetPixel(40,40,"Black")
+
+
+'Writing Text
+GraphicsWindow.DrawBoundText(70,70,150,"John")
+GraphicsWindow.DrawBoundText(120,70,150,"Sally")
+GraphicsWindow.DrawBoundText(180,70,150,"Bill")
+GraphicsWindow.DrawBoundText(250,70,150,"Jessica")
+GraphicsWindow.DrawBoundText(70,120,150,"John")
+GraphicsWindow.DrawBoundText(120,120,150,"Sally")
+GraphicsWindow.DrawBoundText(180,120,150,"Bill")
+GraphicsWindow.DrawBoundText(250,120,150,"Jessica")
+
+
+'Making Shapes
+GraphicsWindow.BrushColor = "Green"
+GraphicsWindow.FillTriangle(700,150,550,300,850,300)
+Program.Delay(globalDelay)
+GraphicsWindow.DrawEllipse(700, 200, 200, 120)
+GraphicsWindow.PenWidth = 5
+GraphicsWindow.DrawEllipse(720, 220, 200, 120)
+GraphicsWindow.BrushColor = "Yellow"
+GraphicsWindow.FillEllipse(725,225,190,110)
+
+
+'Using Varibales
+A = 20
+B = 50
+GraphicsWindow.FillEllipse(A,B,350,350)
+
+
+'Animating Shapes
+Triangle = Shapes.AddTriangle(50,100,100,50,150,100)
+Program.Delay(777)
+Shapes.Animate(Triangle,500,500,1000)

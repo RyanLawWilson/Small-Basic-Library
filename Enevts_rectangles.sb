@@ -1,0 +1,23 @@
+GraphicsWindow.Title = "Draw Some Rectangles"
+GraphicsWindow.Width = 800
+GraphicsWindow.Height = 600
+GraphicsWindow.Show()
+
+GraphicsWindow.MouseDown = GetInitialXY
+GraphicsWindow.MouseUp = DrawRectangle
+
+Sub GetInitialXY
+  x_init = GraphicsWindow.MouseX
+  y_init = GraphicsWindow.MouseY
+EndSub
+
+Sub DrawRectangle
+  x_draw = GraphicsWindow.MouseX
+  y_draw = GraphicsWindow.MouseY
+  If (x_draw - x_init) >= 0 Then
+    GraphicsWindow.FillRectangle(x_init, y_init, (x_draw - x_init), (y_draw - y_init))
+  Else
+    GraphicsWindow.FillRectangle(x_draw, y_draw, (x_init - x_draw), (y_init - y_draw))
+  EndIf
+EndSub
+  

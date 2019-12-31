@@ -1,0 +1,11 @@
+'TextWindow.WriteLine() is used to type to the console.
+TextWindow.WriteLine("This code uses a subroutine to put in non-breaking spaces.")
+nbsp()    'Calling the subroutine to run
+TextWindow.WriteLine("I would create some game including subroutines like I've been doing previously,")
+TextWindow.WriteLine("but I think i'm spending too much time doing that.")
+nbsp()    'Another call to nbsp subroutine
+
+Sub nbsp    'Subrouting to shorten TextWindow.WriteLine("").  This makes some of the code easier to read and it's faster.
+  TextWindow.WriteLine("")
+EndSub
+  

@@ -1,0 +1,92 @@
+TextWindow.Title = "Math problems"
+TextWindow.WriteLine("Can you get these problems right?")
+
+wins = 0
+losses = 0
+score = 0
+
+MainMenu()
+
+' Get's user input.  Checks for bad input.  If input is good, game starts.
+Sub MainMenu
+  BadInput:
+  TextWindow.Write("Pick a Difficulty (1, 2, 3) or type 'Exit': ")
+  difficulty = TextWindow.Read()
+  If difficulty <> 1 And difficulty <> 2 And difficulty <> 3 And (difficulty <> "Exit" And difficulty <> "exit") Then
+    TextWindow.WriteLine("Has to be 1, 2, or 3")
+    Goto BadInput
+  ElseIf difficulty = "Exit" Or difficulty = "exit" Then
+    Leaderboard()
+    TextWindow.WriteLine("See you next time")
+  Else
+    GameStart()
+  EndIf
+EndSub
+
+' Gives math problems based on difficulty chosen.
+Sub GameStart
+  If difficulty = 1 Then
+    num1 = Math.GetRandomNumber(9)
+    num2 = Math.GetRandomNumber(9)
+    TextWindow.Write("What's " + num1 + " + " + num2 + " ?: ")
+    answer = TextWindow.Read()
+    If answer = (num1 + num2) Then
+      TextWindow.WriteLine("Correct!!")
+      wins = wins + 1
+      score = score + 5
+    Else
+      TextWindow.WriteLine("Not Quite.  It's " + (num1 + num2))
+      losses = losses + 1
+      score = score - 1
+    EndIf
+  EndIf
+  
+  If difficulty = 2 Then
+    num1 = Math.GetRandomNumber(20)
+    num2 = Math.GetRandomNumber(20)
+    TextWindow.Write("What's " + num1 + " + " + num2 + " ?: ")
+    answer = TextWindow.Read()
+    If answer = (num1 + num2) Then
+      TextWindow.WriteLine("Correct!!")
+      wins = wins + 1
+      score = score + 10
+    Else
+      TextWindow.WriteLine("Not Quite.  It's " + (num1 + num2))
+      losses = losses + 1
+      score = score - 10
+    EndIf
+  EndIf
+  
+  If difficulty = 3 Then
+    num1 = Math.GetRandomNumber(33)
+    num2 = Math.GetRandomNumber(34)
+    num3 = Math.GetRandomNumber(33)
+    TextWindow.Write("What's " + num1 + " + " + num2 + " + " + num3 + " ?: ")
+    answer = TextWindow.Read()
+    If answer = (num1 + num2 + num3) Then
+      TextWindow.WriteLine("Correct!!")
+      wins = wins + 1
+      score = score + 25
+    Else
+      TextWindow.WriteLine("Not Quite.  It's " + (num1 + num2 + num3))
+      losses = losses + 1
+      score = score - 25
+    EndIf
+  EndIf
+  MainMenu()
+EndSub
+
+' Shows how the player did.  Shows wins,losses,score.
+Sub Leaderboard
+  TextWindow.WriteLine("")
+  TextWindow.WriteLine("")
+  TextWindow.ForegroundColor = "Indigo"
+  TextWindow.BackgroundColor = "Gold"
+  TextWindow.WriteLine("This is how you did: ")
+  TextWindow.WriteLine("Wins:   " + wins)
+  TextWindow.WriteLine("Losses: " + losses)
+  TextWindow.WriteLine("Score:  " + score)
+  TextWindow.WriteLine("")
+  TextWindow.WriteLine("")
+EndSub
+  

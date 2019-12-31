@@ -1,0 +1,118 @@
+' Squids: 4 3 2
+
+TextWindow.Title = "Sploosh / Kaboom!"
+
+InitiatlizeMap()
+hits = 0          ' Number of hits you got | game ends at 9 hits
+shots = 30        ' Number of shots you have left
+iterations = 0    ' Number of times you hit and missed | used for history feature
+TextWindow.WriteLine("Giant Squids r' attakin' the boat! Ye have " + shots + " shots. Fire!")
+
+
+cellSelect:
+
+TextWindow.Write("Select Row (A - H): ")
+row = TextWindow.Read()
+TextWindow.Write("Select Column (1 - 8): ")
+col = TextWindow.Read()
+
+' Check to see if you shot there before.
+If Array.ContainsValue(history,("= " + row + col + " =")) Then
+  TextWindow.WriteLine("You already shot there, select again")
+  Goto cellSelect
+Else
+  history[iterations] = "= " + row + col + " ="   'Every time you select a unique cell, that cell is remembered.
+EndIf
+
+' Is it a hit or a miss?
+If map[row][col] = "s" Then
+  TextWindow.WriteLine("KABOOOOM!!!  Good Shot")
+  hits = hits + 1
+  map[row][col] = "w"
+Else
+  TextWindow.WriteLine("SPLOOOSH!  miss")
+EndIf
+shots = shots - 1
+iterations = iterations + 1
+
+' Testing the Win / Loss conditions
+If shots = 0 Then
+  TextWindow.WriteLine("")
+  TextWindow.WriteLine("")
+  TextWindow.WriteLine("You ran out of shots!!!  The Squids Win")
+ElseIf hits = 9 Then
+  TextWindow.WriteLine("")
+  TextWindow.WriteLine("")
+  TextWindow.WriteLine("You destroyed all of the Squids.")
+  TextWindow.WriteLine("You Won")
+Else
+  Goto cellSelect
+EndIf
+
+
+' Hardcoded scenarios for squids.  Didn't feel like creating an algorithm to randomize them
+Sub MakeSquids
+  scenario = Math.GetRandomNumber(2)
+  If (scenario = 1) Then
+    map["B"][3] = "s"
+    map["B"][3] = "s"
+    map["B"][4] = "s"
+    
+    map["C"][5] = "s"
+    map["D"][5] = "s"
+    map["E"][5] = "s"
+    map["F"][5] = "s"
+    
+    map["E"][6] = "s"
+    map["E"][7] = "s"
+  Else
+    map["C"][3] = "s"
+    map["D"][3] = "s"
+    map["E"][3] = "s"
+    
+    map["E"][1] = "s"
+    map["F"][1] = "s"
+    map["G"][1] = "s"
+    map["H"][1] = "s"
+    
+    map["A"][5] = "s"
+    map["A"][6] = "s"
+  EndIf
+EndSub
+
+' Map starts with all water or "w"
+Sub InitiatlizeMap
+  For c = 1 To 8
+    map["A"][c] = "w"
+  EndFor
+
+  For c = 1 To 8
+    map["B"][c] = "w"
+  EndFor
+
+  For c = 1 To 8
+    map["C"][c] = "w"
+  EndFor
+
+  For c = 1 To 8
+    map["D"][c] = "w"
+  EndFor
+
+  For c = 1 To 8
+    map["E"][c] = "w"
+  EndFor
+
+  For c = 1 To 8
+    map["F"][c] = "w"
+  EndFor
+
+  For c = 1 To 8
+    map["G"][c] = "w"
+  EndFor
+
+  For c = 1 To 8
+    map["H"][c] = "w"
+  EndFor
+
+  MakeSquids()
+EndSub

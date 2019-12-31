@@ -1,0 +1,12 @@
+Amount = 1
+While Amount < 1025
+  TextWindow.WriteLine(Amount)
+  Program.Delay(50)
+  Amount = Amount * 2
+EndWhile
+
+For B = 1 To 10
+  TextWindow.WriteLine(B)
+EndFor
+
+

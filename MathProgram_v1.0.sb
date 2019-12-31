@@ -1,0 +1,45 @@
+TextWindow.Title = "Math Library Stuff"
+TextWindow.WriteLine("Welcome to the Math testing program")
+Program.Delay(1000)
+
+start:
+
+TextWindow.WriteLine("Choose an option: ")
+Program.Delay(333)
+TextWindow.WriteLine("( 1 ) Get remainder of two numbers")
+Program.Delay(333)
+TextWindow.WriteLine("( 2 ) Get the ceiling of a decimal number")
+Program.Delay(333)
+TextWindow.WriteLine("( 3 ) Exit")
+Program.Delay(333)
+TextWindow.Write("Type in your choice: ")
+choice = TextWindow.Read()
+
+If choice = 1 Then
+  TextWindow.WriteLine("Loading...")
+  Program.Delay(333)
+  TextWindow.Write("What's your dividend: ")
+  dividend = TextWindow.Read()
+  TextWindow.Write("What's your divisor: ")
+  divisor = TextWindow.Read()
+  TextWindow.WriteLine("The remainder is: " + Math.Remainder(dividend, divisor))
+  TextWindow.WriteLine("")
+  Program.Delay(1000)
+  Goto start
+ElseIf choice = 2 Then
+  TextWindow.WriteLine("Loading...")
+  Program.Delay(333)
+  TextWindow.Write("Enter decimal number: ")
+  ceilInput = TextWindow.Read()
+  TextWindow.WriteLine("The ceiling of " + ceilInput + " is " + Math.Ceiling(ceilInput))
+  TextWindow.WriteLine("")
+  Program.Delay(1000)
+  Goto start
+ElseIf choice = 3 Then
+  TextWindow.WriteLine("See you next time!")
+Else
+  TextWindow.WriteLine("You need to type in 1, 2, or 3")
+  TextWindow.WriteLine("")
+  Program.Delay(1000)
+  Goto start
+EndIf

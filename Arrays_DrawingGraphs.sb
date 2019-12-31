@@ -1,0 +1,59 @@
+GraphicsWindow.Title = "Make your own graph"
+GraphicsWindow.Width = 800
+GraphicsWindow.Height = 600
+GraphicsWindow.Top = 50
+GraphicsWindow.Left = 50
+GraphicsWindow.BackgroundColor = "PaleTurquoise"
+GraphicsWindow.Show()
+TextWindow.Top = 685
+TextWindow.Left = 50
+
+' Black Square in the bottom left
+GraphicsWindow.BrushColor = "Black"
+GraphicsWindow.FillRectangle(0,550,50,50)
+
+' Y- Axis
+GraphicsWindow.BrushColor = "BurlyWood"
+GraphicsWindow.FillRectangle(0,0,50,600)
+GraphicsWindow.BrushColor = "Black"
+GraphicsWindow.FontSize = 16
+For i = 100 To 1000 Step 100
+  GraphicsWindow.DrawBoundText(0,550 - (i/2),50,i)
+  y_axis[i] = 550 - (i/2)   ' Stores the y value of each nunber for later.
+EndFor
+
+' X- Axis
+GraphicsWindow.BrushColor = "SandyBrown"
+GraphicsWindow.FillRectangle(50,550,750,50)
+GraphicsWindow.BrushColor = "Black"
+GraphicsWindow.FontSize = 16
+For i = 0 To 15
+  GraphicsWindow.DrawBoundText(70 + i*45,560,50,i)
+EndFor
+
+' Graph Lines Using Arrays
+For i = 0 To 15
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.PenColor = "Black"
+  GraphicsWindow.PenWidth = 30
+  lines[i] = Shapes.AddLine((75 + i*45.5),550,(75 + i*45.5), 200)
+EndFor
+
+TextWindow.WriteLine("Welcome to the graphing program.  To exit, type 'exit'.")
+TextWindow.WriteLine("")
+
+mainMenu:
+TextWindow.Write("What Line do you want to edit (Type in the X value): ")
+x_choice = TextWindow.Read()
+If x_choice = "exit" Then
+  TextWindow.WriteLine("Thanks for playing!")
+  TextWindow.WriteLine("The program will end in 2 seconds")
+  Program.Delay(2000)
+  Program.End()
+Else
+  TextWindow.Write("You Chose " + x_choice + ".  What y coordinate do you want (chose the ones on y-axis): ")
+  y_choice = TextWindow.Read()
+  Shapes.Remove(lines[x_choice])
+  lines[x_choice] = Shapes.AddLine((75 + x_choice*45.5),550,(75 + x_choice*45.5),y_axis[y_choice])
+  Goto mainMenu
+EndIf

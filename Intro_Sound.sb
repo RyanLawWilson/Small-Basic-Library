@@ -1,0 +1,21 @@
+TextWindow.BackgroundColor = "DarkRed"
+TextWindow.Write("This is a program that allows you to chose from lasdfadf")
+Sound()
+Sub Sound
+  Start:
+  TextWindow.Write("Bell Chime Click")
+  choice = TextWindow.Read()
+  If choice = "Bell" Then
+    Sound.PlayBellRing()
+  ElseIf choice = "Chime" Then
+    Sound.PlayChime()
+  ElseIf choice = "Click" Then
+    
+    Sound.PlayClick()
+  Else
+    TextWindow.WriteLine("Try Again")
+    Goto Start
+  EndIf
+EndSub
+Sound()
+Sound()

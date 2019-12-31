@@ -1,0 +1,36 @@
+TextWindow.Title = "Create your own number system"
+
+gameState = 1
+
+While gameState = 1
+  TextWindow.Write("Pick the base of your number system: ")
+  base = TextWindow.Read()
+  TextWindow.WriteLine("")
+
+  TextWindow.WriteLine("These are the places, from 1s to " + Math.Power(base, 9) + "s")
+  For p = 0 To 9
+    Program.Delay(150)
+    If p <> 9 Then
+      TextWindow.Write(Math.Power(base, p) + " | ")
+    Else
+      TextWindow.Write(Math.Power(base, p))
+    EndIf
+  EndFor
+  TextWindow.WriteLine("")
+  TextWindow.WriteLine("")
+  
+  TextWindow.WriteLine("What do you want to do?")
+  TextWindow.WriteLine("( 1 ) Go Again")
+  TextWindow.WriteLine("( 2 ) E X I T")
+  TextWindow.Write("Choice: ")
+  choice = TextWindow.Read()
+  
+  If choice = 1 Then
+    gameState = 1
+  Else
+    gameState = 0
+  EndIf
+  
+  TextWindow.WriteLine("")
+EndWhile
+    

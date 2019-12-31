@@ -1,0 +1,153 @@
+GraphicsWindow.Title = "Hello World"
+GraphicsWindow.Width = 1000
+GraphicsWindow.Height = 500
+GraphicsWindow.BackgroundColor = "Red"
+GraphicsWindow.PenColor = GraphicsWindow.GetRandomColor()
+GraphicsWindow.PenWidth = 20
+GraphicsWindow.Show()
+
+Turtle.Show()
+Turtle.Speed = 9
+Turtle.X = 20
+Turtle.Y = 20
+Turtle.Angle = 180
+
+
+
+' H
+Turtle.Move(200)    ' |
+Turtle.Angle = 0    ' |
+Turtle.Move(100)    ' |
+Turtle.TurnRight()  ' |
+Turtle.Move(100)    ' |-
+Turtle.TurnLeft()   ' |-
+Turtle.Move(100)    ' |-'
+Turtle.Angle = 180  ' |-'
+Turtle.move(200)    ' H
+
+' Repositioning the Turtle
+GraphicsWindow.PenWidth = 0
+Turtle.TurnLeft()
+Turtle.Move(50)
+GraphicsWindow.PenWidth = 20
+
+
+' I used subroutines just to reduce typing
+
+
+' E
+m100()
+a270()
+m100()
+r()
+m100()
+r()
+m100()
+a270()
+m100()
+r()
+m100()
+r()
+m100()
+
+' Repositioning the Turtle
+GraphicsWindow.PenWidth = 0
+m50()
+r()
+Turtle.Move(5)
+GraphicsWindow.PenWidth = 20
+
+' L
+m200()
+
+' Repositioning the Turtle
+GraphicsWindow.PenWidth = 0
+l()
+m50()
+l()
+Turtle.Move(5)
+GraphicsWindow.PenWidth = 20
+
+' L
+m200()
+
+' Repositioning the Turtle
+GraphicsWindow.PenWidth = 0
+r()
+m50()
+GraphicsWindow.PenWidth = 20
+
+' O
+m100()
+r()
+m200()
+r()
+m100()
+r()
+m200()
+
+'======== Hello is Done | Starting new Line =========
+
+' Repositioning the Turtle
+GraphicsWindow.PenWidth = 0
+Turtle.MoveTo(20, 250)
+GraphicsWindow.PenWidth = 20
+
+'W
+Turtle.MoveTo(60, 450)
+Turtle.MoveTo(100, 250)
+Turtle.MoveTo(140, 450)
+Turtle.MoveTo(180, 250)
+
+GraphicsWindow.FontSize = 72
+GraphicsWindow.DrawBoundText(250,300,600,"O R L D")
+GraphicsWindow.FontSize = 24
+GraphicsWindow.DrawBoundText(550,300,600,"I got bored")
+
+
+'===== Subroutines =====
+
+' Turns the turtle right
+Sub r
+  Turtle.TurnRight()
+EndSub
+
+' Turns the turtle left
+Sub l
+  Turtle.TurnLeft()
+EndSub
+
+' Moves turtle 50 units
+Sub m50
+  Turtle.Move(50)
+EndSub
+
+' Moves turtle 100 units
+Sub m100
+  Turtle.Move(100)
+EndSub
+
+' Moves turtle 200 units
+Sub m200
+  Turtle.Move(200)
+EndSub
+
+' Change turtle angle to 0
+Sub a0
+  Turtle.Angle = 0
+EndSub
+
+' Change turtle angle to 90
+Sub a90
+  Turtle.Angle = 90
+EndSub
+
+' Change turtle angle to 180
+Sub a180
+  Turtle.Angle = 180
+EndSub
+
+' Change turtle angle to 270
+Sub a270
+  Turtle.Angle = 270
+EndSub
